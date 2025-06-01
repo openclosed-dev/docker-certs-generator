@@ -1,0 +1,19 @@
+services:
+  generator:
+    build: .
+    image: certs-generator:latest
+    environment:
+      - CA_KEY=ca.key
+      - CA_KEY_BITS=2048
+      - CA_CSR=ca.csr
+      - CA_CERT=ca.crt
+      - CA_SUBJECT=Fake root CA
+      - CA_EXPIRE=365
+      - SERVER_KEY=server.key
+      - SERVER_KEY_BITS=2048
+      - SERVER_CSR=server.csr
+      - SERVER_CERT=server.crt
+      - SERVER_SUBJECT=example.org
+      - SERVER_EXPIRE=365
+    volumes:
+      - './certs:/certs'
